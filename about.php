@@ -12,35 +12,7 @@
   </head>
   <body>
    <?php include 'partials/_header.php' ?>
-   <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-  <img class="d-block w-100" src="Photos/2.webp" alt="First slide" style="width:2400px; height:400px; object-fit:cover;">
-</div>
-<div class="carousel-item">
-  <img class="d-block w-100" src="Photos/3.webp" alt="Second slide" style="width:2400px; height:400px; object-fit:cover;">
-</div>
-<div class="carousel-item">
-  <img class="d-block w-100" src="Photos/4.webp" alt="Third slide" style="width:2400px; height:400px; object-fit:cover;">
-</div>
-
-  </div>
-</div>
-   <div class="container my-3">
-    <h2 class="text-certer my-3">Browse Categories</h2>
-      <div class="row">
-        <!-- Use a for loop to iterate through categories -->
-        <div class="col-md-4 my-2">
-          <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="Photos/1.webp" alt="Python code image" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">View Threads</a>
-    </div>
-  </div>
-        </div>
-      </div>
+   
    <?php include 'partials/_footer.php' ?>
 
     <!-- Optional JavaScript -->
