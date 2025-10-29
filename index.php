@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Coding Forum</title>
 </head>
 
@@ -40,20 +39,22 @@
             $sql = "SELECT * FROM `categories`";
             $result = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_assoc($result)) {
+                $id = $row['category_id'];
                 $cat = $row['category_name'];
                 $desc = $row['category_description'];
                 echo '
-                <div class="col-md-4 my-2">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="Photos/1.webp" alt="' . $cat . ' image">
-                        <div class="card-body">
-                            <h5 class="card-title">' . $cat . '</h5>
-                            <p class="card-text">' . substr($desc, 0, 80) . '...</p>
-                            <a href="#" class="btn btn-primary">View Threads</a>
-                        </div>
-                    </div>
-                </div>';
+    <div class="col-md-4 my-2">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="Photos/1.webp" alt="' . $cat . ' image">
+            <div class="card-body">
+                <h5 class="card-title"><a href="threads.php?catid=' . $id . '">' . $cat . '</a></h5>
+                <p class="card-text">' . substr($desc, 0, 80) . '...</p>
+                <a href="threads.php?catid=' . $id . '" class="btn btn-primary">View Threads</a>
+            </div>
+        </div>
+    </div>';
             }
+
             ?>
         </div>
     </div>
@@ -70,4 +71,5 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 </body>
+
 </html>
