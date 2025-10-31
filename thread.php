@@ -15,20 +15,29 @@
 </head>
 
 <body>
-  <?php include 'partials/_header.php'; ?>
-  <?php include 'partials/_dbconnect.php'; ?>
   <?php
-  $id = $_GET['catid'];
-  $sql = "SELECT * FROM `categories` WHERE category_id=$id";
-$result = mysqli_query($conn, $sql);
-while ($row = mysqli_fetch_assoc($result)) {
-  $catname = $row['category_name'];          
-  $catdesc = $row['category_description'];   
+include 'partials/_header.php';
+include 'partials/_dbconnect.php';
+
+if (isset($_GET['threadid'])) {
+    $id = intval($_GET['threadid']);
+    $sql = "SELECT * FROM `threads` WHERE thread_id = $id";
+    $result = mysqli_query($conn, $sql);
+
+    if ($row = mysqli_fetch_assoc($result)) {
+        $title = $row['thread_title'];
+        $desc = $row['thread_desc'];
+        $catname = $title;
+        $catdesc = $desc;
+    } else {
+        echo "No thread found.";
+    }
+} else {
+    echo "Thread ID missing in URL.";
+    exit;
 }
+?>
 
-
-
-  ?>
   <div class="container my-4">
     <div class="jumbotron">
       <h1 class="display-4">Welcome to <?php echo $catname; ?> Python Forums</h1>
@@ -36,13 +45,13 @@ while ($row = mysqli_fetch_assoc($result)) {
       <hr class="my-4">
       <p>Be respectful.Stay on-topic.Use descriptive titles.Be constructive.
         Use appropriate language: Refrain from using obscene, offensive, or demeaning language.Give credit. </p>
-      <a class="btn btn-success btn-lg" href="#" role="button">Learn more</a>
+    <p><b>Posted By: Zaima</b></p>
     </div>
   </div>
 
   <div class="container my-4" id="ques">
-    <h1 class="py-3">Browe Questions</h1>
-    <?php
+    <h1 class="py-3">Discussions</h1>
+    <!-- <?php
     $id = $_GET['catid'];
     $sql = "SELECT * FROM `threads` WHERE thread_cat_id=$id";
 $result = mysqli_query($conn, $sql);
@@ -62,7 +71,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 </div>';
 }
 
-    ?>
+    ?> -->
     
 
   </div>
