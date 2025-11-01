@@ -51,11 +51,13 @@ if (isset($_GET['threadid'])) {
 
   <div class="container my-4" id="ques">
     <h1 class="py-3">Discussions</h1>
-    <!-- <?php
+    <?php
     $id = $_GET['catid'];
     $sql = "SELECT * FROM `threads` WHERE thread_cat_id=$id";
 $result = mysqli_query($conn, $sql);
+$noResult = true;
 while ($row = mysqli_fetch_assoc($result)) {
+  $noResult = false;
   $thread_id = $row['thread_id'];            
   $title = $row['thread_title'];            
   $desc = $row['thread_desc'];
@@ -71,7 +73,17 @@ while ($row = mysqli_fetch_assoc($result)) {
 </div>';
 }
 
-    ?> -->
+if($noResult){
+  echo '<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <p class="display-4">No threads found</p>
+    <p class="lead"><b>Be the first person to ask a question</b></p>
+  </div>
+</div>' ;
+
+}
+
+    ?>
     
 
   </div>

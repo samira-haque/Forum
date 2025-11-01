@@ -21,6 +21,7 @@
   $id = $_GET['catid'];
   $sql = "SELECT * FROM `categories` WHERE category_id=$id";
 $result = mysqli_query($conn, $sql);
+
 while ($row = mysqli_fetch_assoc($result)) {
   $catname = $row['category_name'];          
   $catdesc = $row['category_description'];   
@@ -39,6 +40,22 @@ while ($row = mysqli_fetch_assoc($result)) {
       <a class="btn btn-success btn-lg" href="#" role="button">Learn more</a>
     </div>
   </div>
+  <div class="container">
+    <h1 class="py-3">Start a Discussion</h1>
+    <form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Thread Title</label>
+    <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp" placeholder="Title">
+    <small id="emailHelp" class="form-text text-muted">Keep your title as short and crisp as possible </small>
+
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Ellaborate your concern</label>
+    <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+  </div>
 
   <div class="container my-4" id="ques">
     <h1 class="py-3">Browe Questions</h1>
@@ -46,7 +63,9 @@ while ($row = mysqli_fetch_assoc($result)) {
     $id = $_GET['catid'];
     $sql = "SELECT * FROM `threads` WHERE thread_cat_id=$id";
 $result = mysqli_query($conn, $sql);
+$noResult = true;
 while ($row = mysqli_fetch_assoc($result)) {
+  $noResult = false;
   $thread_id = $row['thread_id'];            
   $title = $row['thread_title'];            
   $desc = $row['thread_desc'];
@@ -62,7 +81,20 @@ while ($row = mysqli_fetch_assoc($result)) {
 </div>';
 }
 
+
+if($noResult){
+  echo '<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <p class="display-4">No threads found</p>
+    <p class="lead"><b>Be the first person to ask a question</b></p>
+  </div>
+</div>' ;
+
+}
+
     ?>
+
+
     
 
   </div>
